@@ -9,7 +9,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Services\" />
+    <Folder Include="Controllers\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Stock.Inventario.Repositories\Stock.Inventario.Repositories.csproj" />
   </ItemGroup>
 
 </Project>

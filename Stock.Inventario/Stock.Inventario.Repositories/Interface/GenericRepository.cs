@@ -19,11 +19,12 @@
             //_dbSet = _dBContext.Set<T>();
         }
 
-        public async Task<T> Add(T entity)
+        public async Task<bool> Add(T entity)
         {
-            await _dBContext.Set<T>().AddAsync(entity);
+            var result = await _dBContext.Set<T>().AddAsync(entity);
            // await _dBContext.SaveChangesAsync();
-            return entity;
+          
+            return result.IsKeySet;
         }
 
         public async Task<T> Update(T entity, int id)
@@ -38,18 +39,18 @@
             return entity;
         }
 
-        public async Task<T> Delete(int id)
+        public async Task<bool> Delete(int id)
         {
             var entity = await _dBContext.Set<T>().FindAsync(id);
             if (entity == null)
             {
-                return entity;
+                return false;
             }
 
              _dBContext.Set<T>().Remove(entity);
             //await _dBContext.SaveChangesAsync();
-
-            return entity;
+            return true;
+            ;
         }
 
         public async Task<T> Get(int id)
