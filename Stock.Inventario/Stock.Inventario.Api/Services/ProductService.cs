@@ -1,9 +1,10 @@
 ﻿namespace Stock.Inventario.Api.Services
 {
-    using DisneyApi.Core.Repositories.UnitOfWork;
+
     using Stock.Inventario.Api.DTO;
     using Stock.Inventario.Api.Helper;
     using Stock.Inventario.Api.Mapper;
+    using Stock.Inventario.Repositories.UnitOfWork;
     using System;
     using System.Collections.Generic;
     using System.Linq;
@@ -11,7 +12,7 @@
 
     public class ProductService : IProductService
     {
-        private IUnitOfWork _unitOfWork;
+        private readonly IUnitOfWork _unitOfWork;
 
         public ProductService(IUnitOfWork unitOfWork)
         {

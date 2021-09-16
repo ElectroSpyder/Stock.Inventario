@@ -5,15 +5,13 @@ namespace Stock.Inventario.Entities.Context
 {
     public class StockDbContext : DbContext
     {
-        public DbSet<Product> Products { get; set; }
+        public DbSet<Product> Products { get; set; }       
 
-        protected override void OnConfiguring(
-           DbContextOptionsBuilder optionsBuilder)
+        public StockDbContext(DbContextOptions<StockDbContext> options): base(options)
         {
-            optionsBuilder.UseSqlite(
-                "Data Source=Stock.db");
-            optionsBuilder.UseLazyLoadingProxies();
-            base.OnConfiguring(optionsBuilder);
+            
         }
+
+       
     }
 }

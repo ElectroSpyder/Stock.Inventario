@@ -1,4 +1,4 @@
-﻿namespace DisneyApi.Core.Repositories.GenericRepository
+﻿namespace Stock.Inventario.Repositories.Interface
 {
     using Microsoft.EntityFrameworkCore;
     using Stock.Inventario.Entities.Context;
@@ -21,10 +21,10 @@
 
         public async Task<bool> Add(T entity)
         {
-            var result = await _dBContext.Set<T>().AddAsync(entity);
-           // await _dBContext.SaveChangesAsync();
+             await _dBContext.Set<T>().AddAsync(entity);
+            return true;
           
-            return result.IsKeySet;
+           // return result.IsKeySet;
         }
 
         public async Task<T> Update(T entity, int id)

@@ -1,7 +1,7 @@
-﻿namespace DisneyApi.Core.Repositories.UnitOfWork
+﻿namespace Stock.Inventario.Repositories.UnitOfWork
 {
-    using DisneyApi.Core.Repositories.GenericRepository;
     using Stock.Inventario.Entities.Entities;
+    using Stock.Inventario.Repositories.Interface;
     using System;
     using System.Threading.Tasks;
 

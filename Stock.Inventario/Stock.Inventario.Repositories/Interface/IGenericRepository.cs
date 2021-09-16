@@ -1,4 +1,4 @@
-﻿namespace DisneyApi.Core.Repositories.GenericRepository
+﻿namespace Stock.Inventario.Repositories.Interface
 {
     using System;
     using System.Collections.Generic;
