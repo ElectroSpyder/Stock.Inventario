@@ -120,10 +120,22 @@
         {
             try
             {
-                var result = await _unitOfWork.ProductRepository.Update(new EntityMapper().MapProductoDtoToProduct(dto), id);
-                await _unitOfWork.SaveAsync();
+                var existEntity = await _unitOfWork.ProductRepository.Get(id);
+                if (existEntity != null)
+                {
+                    var entity = new EntityMapper().MapToProduct(existEntity, dto);
+                    _unitOfWork.ProductRepository.Update(entity);
+                    await _unitOfWork.SaveAsync();
 
-                return new Response { State = true, Result = result, Messaage = "Ok" };
+                    return new Response { State = true, Result = new EntityMapper().MapProductToProductDto(entity), Messaage = "Ok" };
+                }
+
+                return new Response
+                {
+                    State = false,
+                    Result = existEntity,
+                    Messaage = "same wrong in savechange"
+                };
             }
             catch (Exception ex)
             {

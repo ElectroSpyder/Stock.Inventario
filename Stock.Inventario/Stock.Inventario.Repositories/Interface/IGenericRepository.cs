@@ -11,7 +11,7 @@
         Task<List<T>> GetAll();
         Task<T> Get(int id);
         Task<bool> Add(T entity);
-        Task<T> Update(T entity, int id);
+        void Update(T entity);
         Task<bool> Delete(int id);
         Task<IQueryable<T>> GetAllByFunc(Expression<Func<T, bool>> filter, string order = null);
         Task<T> GetSingleByFunc(Expression<Func<T, bool>> filter, string order = null);

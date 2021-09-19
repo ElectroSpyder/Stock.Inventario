@@ -27,16 +27,10 @@
            // return result.IsKeySet;
         }
 
-        public async Task<T> Update(T entity, int id)
-        {
-            var exist = await _dBContext.Set<T>().FindAsync(id);
-            if (exist != null)
-            {
-                _dBContext.Entry(entity).State = EntityState.Modified;
-            }
-
-            // await _dBContext.SaveChangesAsync();
-            return entity;
+        public void Update(T entity)
+        {           
+              _dBContext.Entry(entity).State = EntityState.Modified;
+            
         }
 
         public async Task<bool> Delete(int id)

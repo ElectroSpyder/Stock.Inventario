@@ -2,6 +2,7 @@
 {
     using Stock.Inventario.Api.DTO;
     using Stock.Inventario.Entities.Entities;
+    using System;
 
     public class EntityMapper
     {
@@ -11,7 +12,8 @@
             {
                 Name = dto.Name,
                 Description = dto.Description,
-                Stock = dto.Stock
+                Stock = dto.Stock,
+                DateOfUpdate = DateTime.Now
             };
             return product;
         }
@@ -25,6 +27,18 @@
                 Stock = product.Stock
             };
             return productDto;
+        }
+
+        public Product MapToProduct(Product product, ProductDto dto)
+        {
+            product.Name = dto.Name;
+            product.Stock = dto.Stock;
+            product.Description = dto.Description;
+            product.DateOfUpdate = DateTime.Now;
+
+            return product;
+
+                  
         }
     }
 }

@@ -19,8 +19,7 @@
             _productservice = productservice;
         }
 
-        [HttpGet]
-        [Route("/auth/register")]
+        [HttpGet]        
         public async Task<ActionResult< Response>> Get()
         {
             try
@@ -40,6 +39,21 @@
             try
             {
                 var result = await _productservice.Add(dto);
+
+                return result;
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
+            }
+        }
+
+        [HttpPut("update/{id:int}")]
+        public async Task<ActionResult<Response>> Put(ProductDto dto, int id)
+        {
+            try
+            {
+                var result = await _productservice.Update(dto, id);
 
                 return result;
             }
